@@ -67,6 +67,8 @@ foreach ($item_arr["vergunning"] as $item){
 	if (count($results)>0){
 		$cdk_id =  $results[0]->cdk_id;
 		$data = $item;
+		//sloppy named entity recognition
+		$data["foaf_isPrimaryTopicOf"] = "http://nl.wikipedia.org/wiki/" . $data["onderwerp"];
 		$res = $citySDKProxy->addData($cdk_id, $layer, $data);
 		echo $res;
 	}
